@@ -1,0 +1,14 @@
+version: '2.4'
+
+services:
+  quagga:
+    build: '.'
+    image: 'samburney/quagga:latest'
+    restart: 'unless-stopped'
+    cap_add:
+     - NET_ADMIN
+     - NET_BROADCAST
+     - SYS_ADMIN
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - './data:/etc/quagga'
